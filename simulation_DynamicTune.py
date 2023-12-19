@@ -47,13 +47,13 @@ class CooperativePolicy:
         if self.UpdatedRL== False and self.NormalChoise == False:
             return str("Random Policy")
         elif self.UpdatedRL== False and self.NormalChoise == True and self.CosiderPrice == False:
-            return str("Normal Policy")
+            return str("Agricultural Policy")
         elif self.UpdatedRL== False and self.NormalChoise == True and self.CosiderPrice == True:
-            return str("Normal Policy considering Price")
+            return str("Agricultural&Price Policy")
         elif self.UpdatedRL== True and self.ConsiderMiniSupply == False:
-            return str("DQN without MiniSupply")
+            return str("PDRL without MiniSupply Policy")
         elif self.UpdatedRL== True and self.ConsiderMiniSupply == True:
-            return str("DQN considering MiniSupply")
+            return str("PDRL Policy")
         else:
             return str("Wrong")
 
@@ -1332,7 +1332,7 @@ def Draw_Frequency_of_Planting(crop_total_bar_, pre_month,label_):# supply_total
                 plt.tick_params(labelsize=16)  # 调整坐标轴数字大小
             plt.xticks(x, x_label, rotation=20)
 
-            if i == Parameter.num_cooperative - 2:
+            if i == Parameter.num_cooperative - 1:
                 plt.ylabel("Number of Proposed Planting",{'fontname':'Times New Roman','fontsize':20})
             if i == Parameter.num_cooperative - 1:
                 plt.xlabel("Crop",{'fontname':'Times New Roman','fontsize':20})
@@ -1355,7 +1355,7 @@ def Draw_Frequency_of_Planting(crop_total_bar_, pre_month,label_):# supply_total
             else:
                 plt.tick_params(labelsize=16)  # 调整坐标轴数字大小
             plt.xticks(x, x_label, rotation=20)
-            if i == Parameter.num_cooperative - 2:
+            if i == Parameter.num_cooperative - 1:
                 plt.ylabel("Number of Total Planting",{'fontname':'Times New Roman','fontsize':20})
             if i == Parameter.num_cooperative - 1:
                 plt.xlabel("Crop",{'fontname':'Times New Roman','fontsize':20})
@@ -1422,8 +1422,9 @@ def Draw_Frequency_of_Planting_PerMonth(crop_total_bar_, pre_month,label_):# sup
                 plt.tick_params(labelsize=16)  # 调整坐标轴数字大小
             plt.xticks(x, x_label, rotation=20)
             plt.grid(visible=True, axis='x')  # 只显示x轴网格线
-            if i == Parameter.num_cooperative - 2:
-                plt.ylabel("Number of Proposed Planting per Month",{'fontname':'Times New Roman','fontsize':20})
+            if i == Parameter.num_cooperative - 1:
+                plt.ylabel("Number of Proposed Planting",{'fontname':'Times New Roman','fontsize':20})
+                plt.xlabel("Month", {'fontname': 'Times New Roman', 'fontsize': 20})
             if i == Parameter.num_cooperative - 1:
                 if Parameter.num_cooperative == 1:
                     plt.legend(bbox_to_anchor=(1.01, 0), loc=3, borderaxespad=0, prop={'size': (Parameter.MyLegendSize + 8)} ,ncol=1)
@@ -1486,8 +1487,9 @@ def Draw_Frequency_of_Planting_PerCrop(crop_total_bar_, pre_month,label_):# supp
             plt.grid(visible=True, axis='x')  # 只显示x轴网格线
             ##x倾斜角度
             plt.xticks(x, x_label, rotation=20)
-            if i == Parameter.num_cooperative - 2:
-                plt.ylabel("Number of Proposed Planting per Crop")
+            if i == Parameter.num_cooperative - 1:
+                plt.ylabel("Number of Proposed Planting",{'fontname':'Times New Roman','fontsize':20})
+                plt.xlabel("Crop", {'fontname': 'Times New Roman', 'fontsize': 20})
             if i == Parameter.num_cooperative - 1:
                 if Parameter.num_cooperative == 1:
                     plt.legend(bbox_to_anchor=(1.01, 0), loc=3, borderaxespad=0, prop={'size': (Parameter.MyLegendSize + 8)}, ncol=1)
